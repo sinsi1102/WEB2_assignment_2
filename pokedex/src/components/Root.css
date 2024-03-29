@@ -1,0 +1,19 @@
+#pokebox {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-stuff {
+    padding: 5px;
+}
+
+#window {
+    text-align: center;
+}
