@@ -38,14 +38,14 @@ export default function Root() {
 
         <div id="navbar">
           { offset > 0 && 
-            <div class="nav-stuff">
+            <div className="nav-stuff">
               <button onClick={() => handleClick(-1)}>Prev</button>
             </div>
           }
-          <div class="nav-stuff">
+          <div className="nav-stuff">
             <p>{offset+1}</p>
           </div>
-          <div class="nav-stuff">
+          <div className="nav-stuff">
             <button onClick={ () => handleClick(1)}>Next</button>
           </div>
         </div>

@@ -21,26 +21,27 @@ export default function Pokecard({name, url}) {
   }, [url]);
 
   const boxStyle = {
-    "background-color": typeColor(type)
+    "backgroundColor": typeColor(type)
   };
 
   return (
     <>
       {info ? (
         <div id="box" style={boxStyle}>
-        <Link to="/info" style={{ textDecoration: 'none', color: 'inherit' }}>
+        <Link to={`/info/${info.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          
             <div id="alignment">
-                <div class="content">
-                    <h1>#{info.id} - {name.charAt(0).toUpperCase() + name.slice(1)}</h1>
+                <div className="content">
+                    <h2>#{info.id} - {name.charAt(0).toUpperCase() + name.slice(1)}</h2>
                 </div>
-                <div class="content">
+                <div className="content">
                     <img
                     src={info.sprites.front_default}
                     alt={`${name} sprite`}
                     />
                 </div>
             </div>
-          </Link>
+        </Link>
         </div>
       ) : (
         <p>Loading...</p>

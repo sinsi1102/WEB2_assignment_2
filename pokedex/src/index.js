@@ -4,17 +4,17 @@ import Root from "./routes/Root";
 import InfoPage from './routes/InfoPage';
 
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Root />,
   },
   {
-    path: "/info",
+    path: "/info/:id",
     element: <InfoPage />
   },
 ]);

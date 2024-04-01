@@ -1,0 +1,29 @@
+#info-box {
+    background-color: #535353;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    margin: 5% auto;
+    font-size: 1.2em;
+    max-width: 75%;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#content-box {
+    margin: 3%;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.img-box {
+    align-self: center;
+    justify-self: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.contents {
+    flex: 1;
+}
