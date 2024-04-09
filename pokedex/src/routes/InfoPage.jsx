@@ -2,9 +2,10 @@ import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import "../components/InfoPage.css"
 export default function InfoPage() {
-    const { id } = useParams();
+    const { id } = useParams(); //gets the id from the router
     const [data, setData] = useState(null);
 
+    //relies on id changing to execute again. if the dependency array was left empty, this would execute on every frame render
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -13,7 +14,7 @@ export default function InfoPage() {
                     const data = await response.json();
                     setData(data);
                 } else {
-                    throw new Error('Failed to fetch data');
+                    throw new Error('Response was not OK');
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -23,10 +24,15 @@ export default function InfoPage() {
         fetchData();
     }, [id]);
 
+
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
     return (data &&
         <div id="info-box">
             <div className="contents">
-                <h1>{data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h1>
+                <h1>{capitalizeFirstLetter(data.name)}</h1>
             </div>
             <div id="content-box">
                 <div className="contents">
@@ -35,9 +41,10 @@ export default function InfoPage() {
                     <p>Height: {data.height}</p>
                     <p>Abilities: {data.abilities.map(ab => ab.ability.name).join(", ")}</p>
                     {data.stats.map(stat => {
-                        return <p>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}: {stat.base_stat}</p>
+                        return <p key={stat.stat.name}>
+                            {capitalizeFirstLetter(stat.stat.name)}: {stat.base_stat}
+                        </p>
                     })}
-                    
                 </div>
 
                 <div className="contents img-box">

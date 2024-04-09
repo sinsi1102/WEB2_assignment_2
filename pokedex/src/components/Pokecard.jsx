@@ -8,19 +8,19 @@ export default function Pokecard({name, url}) {
 
     useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setInfo(data);
-        setType(data.types[0].type.name);
-      } catch (error) {
-        console.error(error);
-      }
+      fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        setInfo(response);
+        setType(response.types[0].type.name);
+      })
+      .catch(err => console.log(err)); 
     };
+
     fetchData();
   }, [url]);
 
-  const boxStyle = {
+  const boxStyle = { //wouldn't let me inline style conditionally, so this was my workaround
     "backgroundColor": typeColor(type)
   };
 

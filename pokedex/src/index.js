@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Root from "./routes/Root";
+import Home from "./routes/Home";
 import InfoPage from './routes/InfoPage';
 
 import {
@@ -11,7 +11,7 @@ import {
 const router = createHashRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Home />,
   },
   {
     path: "/info/:id",
