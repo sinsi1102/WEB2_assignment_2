@@ -1,0 +1,27 @@
+.centered-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #c {
+    /* Styles for your card */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  #content-box {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .contents {
+    margin-bottom: 10px;
+  }
+  
+  .img-box img {
+    max-width: 200px;
+  }
+  

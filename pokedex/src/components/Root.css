@@ -1,0 +1,10 @@
+.pokemon-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    grid-gap: 10px; /* Adjust as needed for spacing between cards */
+  }
+  
+  .pokemon-container > * {
+    width: calc(25% - 10); /* 25% width for each card minus the gap */
+  }
+  

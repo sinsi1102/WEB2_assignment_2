@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
+import {useState, useEffect} from 'react';
+import "../components/InfoPage.css"
 
 export default function InfoPage() {
     const { id } = useParams();
-    const [pockemon, setPockemon] = useState(null);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -11,7 +12,7 @@ export default function InfoPage() {
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
                 if (response.ok) {
                     const data = await response.json();
-                    setPockemon(data);
+                    setData(data);
                 } else {
                     throw new Error('Failed to fetch data');
                 }
@@ -23,26 +24,24 @@ export default function InfoPage() {
         fetchData();
     }, [id]);
 
-
-    return (pockemon &&
-        <div id="info-box">
+    return (data &&
+        <div id="c">
             <div className="contents">
-                <h1>{pockemon.name.charAt(0).toUpperCase() + pockemon.name.slice(1)}</h1>
+                <h1>{data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h1>
             </div>
             <div id="content-box">
                 <div className="contents">
-                    <p>Type(s): {pockemon.types.map(type => type.type.name).join(", ")}</p>
-                    <p>Weight: {pockemon.weight}</p>
-                    <p>Height: {pockemon.height}</p>
-                    <p>Abilities: {pockemon.abilities.map(ab => ab.ability.name).join(", ")}</p>
-                    {pockemon.stats.map(stat => {
+                    <p>Type(s): {data.types.map(type => type.type.name).join(", ")}</p>
+                    <p>Weight: {data.weight}</p>
+                    <p>Height: {data.height}</p>
+                    <p>Abilities: {data.abilities.map(ab => ab.ability.name).join(", ")}</p>
+                    {data.stats.map(stat => {
                         return <p>{stat.stat.name.charAt(0).toUpperCase() + stat.stat.name.slice(1)}: {stat.base_stat}</p>
                     })}
-                    
                 </div>
 
                 <div className="contents img-box">
-                    <img src={pockemon.sprites.front_default} alt={pockemon.name} width="200px" height="auto"/>
+                    <img src={data.sprites.front_default} alt={data.name} width="200px" height="auto"/>
                 </div>
             </div>
         </div>

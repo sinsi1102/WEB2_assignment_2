@@ -14,7 +14,7 @@ const router = createHashRouter([
     element: <Root />,
   },
   {
-    path: "/info",
+    path: "/info/:id",
     element: <InfoPage />
   },
 ]);

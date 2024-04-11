@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import PockemonCard from "../components/PockemonCard";
+import PokemonCard from "../components/PokemonCard";
+import "../components/Root.css"
 
 export default function Root() {
   const [pokemon, setPokemon] = useState(null);
@@ -25,7 +25,7 @@ export default function Root() {
         console.error('Error fetching Pokemon:', error);
         setLoading(false); // Update loading state in case of error
       });
-  }, [offset]);
+  }, [offset])
 
   if (loading) {
     return <div>Loading...</div>;
@@ -52,11 +52,9 @@ export default function Root() {
       </>
 
       {pokemon && (
-        <div>
-          {pokemon.map((pokemon, index) => (
-            <PockemonCard
-              key={index}
-              pokemon={pokemon.name}
+        <div className="pokemon-container">
+          {pokemon.map((pokemon) => (
+            <PokemonCard
               url={pokemon.url} />
           ))}
         </div>
